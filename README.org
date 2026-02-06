@@ -65,11 +65,16 @@ Next, we'll create some data to plot. We'll generate two arrays, ~x~ and ~y~ of 
   y = x*3 + np.random.randn(N)*2
 #+end_src
 
-To view what you've created, we'll use ~matplotlib~. Let's use a scatter plot to look at the relationship between the two arrays:
+To view what you've created, we'll use ~matplotlib~. Let's use a scatterplot to look at the relationship between the two arrays:
 #+begin_src python
   plt.scatter(x, y)
   plt.show()
 #+end_src
+
+Your scatterplot will look slightly different, but should approximate this plot:
+#+CAPTION:A scatterplot of the x and y arrays that you created.
+#+NAME:fig:scatterplot_xy
+[[https://github.com/jd2504/bph-research/blob/master/scatterplot_xy.png]]
 
 There are other visualizations we can use. We've said the numbers are normally distributed. Let's check that the data look normally distributed (they should follow a bell curve):
 #+begin_src python
