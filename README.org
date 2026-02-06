@@ -1,0 +1,82 @@
+#+TITLE:Bronx Prep CS/NYAS research project
+
+* Revisiting types of data you collect
+** Attributes
+These are fields that cut your data into *categories*. For example,
+- Grade level (sophomore, junior, senior)
+- Gender
+- Ethnicity
+- [ … ]
+They are typically ~strings~.
+
+** Metrics
+These are fields that measure something that varies (or changes). We want to know: when a metric changes, does it affect the outcome we want to measure? For example,
+- “How much time do you spend on social media per day?”
+- “How many times do you eat take-out food, on average, per week?”
+- “How much time do you spend on a device on a non-social media application?”
+- [ … ]
+They are typically ~numeric~ (open-ended), including ratings (1-100, etc.).
+
+** Outcome
+This is the primary thing you’re trying to measure, i.e. *mental health outcomes*.
+
+When you put these all together, a survey will typically measure the effect of *metrics* on an *outcome*, broken out by some *attributes*.
+
+* Survey, first round
+** Attributes
+1. What social media app do you use the most?
+2. What type of content do you usually like to watch on social media or engage with?
+3. Do you consider yourself ever "doom-scrolling"?
+4. Could you spend a day without using social media?
+5. Can social media have a big influence on being able to cause  someone to change their personal beliefs?
+
+** Metrics
+6. How long are you on social media daily? 
+7. How often do you look at the comments?
+
+** Outcome
+8. How is your mood after using social media? 
+9. Rate your mental health on a scale of 1-10
+
+* Some helpful tools for analysis
+The following section should help give you a taste of how to approach analysis, visualizing our data, and handling the survey dataset. All code will be in python3.
+
+** Interactive coding: the Colab environment
+An example environment that you can use is [[https://colab.research.google.com/][Google Colab]]. It uses a version of [[https://ipython.org/][iPython notebooks]] which allows you to code interactively, meaning you can run one block of code, then another, then plot your data.
+
+To run a block of code, press [Shift] + [Enter] to move to the next paragraph, or [Control] + [Enter] to stay on the same paragraph. If you're like me, you'll want to learn a few other keyboard shortcuts: [[https://colab.research.google.com/notebooks/editor_shortcuts.ipynb][Colab shortcuts]] notebook.
+
+** Example data and plotting
+We'll use a few python packages for analysis and plotting.
+#+begin_src python
+  import numpy as np
+  from matplotlib import pyplot as plt
+#+end_src
+
+This imports the ~numpy~ and ~matplotlib~ libraries to use later. We'll call them ~np~ and ~plt~ (see code block) to make things easier to type. This naming is standard.
+
+Next, we'll create some data to plot. We'll generate two arrays, ~x~ and ~y~ of the length 100 (N=100). ~x~ will be be randomly generated, and we'll create ~y~ based on the values of ~x~:
+#+begin_src python
+  N = 100
+
+  # randn will create N random numbers under 'normal' distribution
+  x = np.random.randn(N)
+  # use x to create y and add some more randomness
+  y = x*3 + np.random.randn(N)*2
+#+end_src
+
+To view what you've created, we'll use ~matplotlib~. Let's use a scatter plot to look at the relationship between the two arrays:
+#+begin_src python
+  plt.scatter(x, y)
+  plt.show()
+#+end_src
+
+There are other visualizations we can use. We've said the numbers are normally distributed. Let's check that the data look normally distributed (they should follow a bell curve):
+#+begin_src python
+  plt.hist(x, bins=20, alpha=0.5) # alpha=0.5 makes the plot transparent (50%) so that we can see both
+  plt.hist(y, bins=20, alpha=0.5)
+  plt.show()
+#+end_src
+
+** Example handling the first round of survey data
+Here is an example notebook that cleans up some of the data that you have collected in the first round of survey results: [[https://colab.research.google.com/drive/1O5xNcKErojmh90sI1lLXypzmPvRKO83T][Survey results Colab notebook]]
