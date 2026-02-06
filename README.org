@@ -22,7 +22,7 @@ This is the primary thing you’re trying to measure, i.e. *mental health outcom
 
 When you put these all together, a survey will typically measure the effect of *metrics* on an *outcome*, broken out by some *attributes*.
 
-* Survey, first round
+* Survey questions, first round
 ** Attributes
 1. What social media app do you use the most?
 2. What type of content do you usually like to watch on social media or engage with?
@@ -37,6 +37,11 @@ When you put these all together, a survey will typically measure the effect of *
 ** Outcome
 8. How is your mood after using social media? 
 9. Rate your mental health on a scale of 1-10
+
+** Notes
+Your next steps will be to meet with your small groups and /revise your survey questions/. Some thought-starters after our last discussion:
+- The initial question set has 3 metrics. You'll want to expand this to capture the *social media* box that we went over in class. REMEMBER: repetition is okay, as long as you're /fully/ capturing what you want to measure.
+- Decide on the question that captures your *outcome* - e.g. it could be: your mood after being on social media, your overall feeling of mental health from 1-10, or some other metric.
 
 * Some helpful tools for analysis
 The following section should help give you a taste of how to approach analysis, visualizing our data, and handling the survey dataset. All code will be in python3.
@@ -71,7 +76,7 @@ To view what you've created, we'll use ~matplotlib~. Let's use a scatterplot to 
   plt.show()
 #+end_src
 
-Your scatterplot will look slightly different, but should approximate this plot:
+Your scatterplot will look slightly different, but should approximate...
 #+CAPTION:A scatterplot of the x and y arrays that you created.
 #+NAME:fig:scatterplot_xy
 [[https://github.com/jd2504/bph-research/blob/master/scatterplot_xy.png]]
@@ -82,6 +87,56 @@ There are other visualizations we can use. We've said the numbers are normally d
   plt.hist(y, bins=20, alpha=0.5)
   plt.show()
 #+end_src
+
+Which produces...
+#+CAPTION:Histogram of x and y arrays.
+#+NAME:fig:histogram_xy
+[[https://github.com/jd2504/bph-research/blob/master/histogram_xy.png]]
+
+You can make multiple plots (subplots) on the same figure as well. We'll create two variations of ~y~, ~y1~ and ~y1~. We'll use ~numpy~ that we imported earlier to plot the logarithm of ~x~ plus random noise again:
+#+begin_src
+  N = 1000
+
+  x = np.random.randn(N)
+  y1 = np.log(x) + np.random.randn(N)*0.75
+  y2 = np.log(x) + np.random.randn(N)*2.2
+
+  plt.scatter(x,y1, alpha=0.5)
+  plt.scatter(x,y2, alpha=0.5)
+  plt.show()
+#+end_src
+
+Producing...
+#+CAPTION:Two versions of y.
+#+NAME:fig:scatterplot
+[[https://github.com/jd2504/bph-research/blob/master/scatterplot_logx.png]]
+
+Or you could plot them side by side using /subplots/:
+#+begin_src
+  plt.figure(figsize=(12,5))
+  
+  # first subplot (on the left)
+  plt.subplot(1,2,1)
+  plt.scatter(x,y1, alpha=0.5, label='y1 = log(x) + noise')
+  plt.xlabel('x')
+  plt.ylabel('y1')
+  plt.legend()
+
+  # second subplot - on the right
+  plt.subplot(1,2,2)
+  plt.scatter(x,y2, alpha=0.5, label='y1 = log(x) + more noise')
+  plt.xlabel('x')
+  plt.ylabel('y2')
+  plt.legend()
+
+  plt.show()
+#+end_src
+
+Which produces...
+Producing...
+#+CAPTION:Two versions of y.
+#+NAME:fig:scatterplot
+[[https://github.com/jd2504/bph-research/blob/master/scatterplot_logx_2.png]]
 
 ** Example handling the first round of survey data
 Here is an example notebook that cleans up some of the data that you have collected in the first round of survey results: [[https://colab.research.google.com/drive/1O5xNcKErojmh90sI1lLXypzmPvRKO83T][Survey results Colab notebook]]
