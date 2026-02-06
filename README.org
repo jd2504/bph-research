@@ -133,7 +133,6 @@ Or you could plot them side by side using /subplots/:
 #+end_src
 
 Which produces...
-Producing...
 #+CAPTION:Two versions of y.
 #+NAME:fig:scatterplot
 [[https://github.com/jd2504/bph-research/blob/master/scatterplot_logx_2.png]]
