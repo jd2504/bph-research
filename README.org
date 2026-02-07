@@ -60,6 +60,8 @@ We'll use a few python packages for analysis and plotting.
 
 This imports the ~numpy~ and ~matplotlib~ libraries to use later. We'll call them ~np~ and ~plt~ (see code block) to make things easier to type. This naming is standard.
 
+*NOTE*: If you don't understand what you're doing, your first source should be online documentation. /Always read the documentation!/ For example, you can find ~numpy~ and ~matplotlib~ documentation [[https://numpy.org/doc/stable/index.html][here]] and [[https://matplotlib.org/stable/][here]]. You can also Google: ~numpy randn~.
+
 Next, we'll create some data to plot. We'll generate two arrays, ~x~ and ~y~ of the length 100 (N=100). ~x~ will be be randomly generated, and we'll create ~y~ based on the values of ~x~:
 #+begin_src python
   N = 100
@@ -136,6 +138,34 @@ Which produces...
 #+CAPTION:Two versions of y.
 #+NAME:fig:scatterplot
 [[https://github.com/jd2504/bph-research/blob/master/scatterplot_logx_2.png]]
+
+So far we've only plotted /continuous/ data, or /metrics/...
+
+In your survey data, you will have a number of categorical variables, or /attributes/. Let's generate some random data and plot them...
+
+#+begin_src
+  N = 100
+
+  categories = ['Freshman', 'Sophomore', 'Junior', 'Senior']
+
+  # randomly choose between our categories with a total size of N (100)
+  a = np.random.choice(categories, N)
+  # np.unique with the return_counts=True option gives us the categories with the count of each in our data, `a`
+  a_categories, a_counts = np.unique(a, return_counts=True)
+#+end_src
+
+Let's plot our data using ~plt.bar()~:
+#+begin_src
+  plt.bar(a_categories, a_counts)
+  plt.show()
+#+end_src
+
+Producing...
+#+CAPTION:Bar plot of grades.
+#+NAME:fig:barplot_grades
+[[https://github.com/jd2504/bph-research/blob/master/bar_grades.png]]
+
+This code is also saved [[https://colab.research.google.com/drive/1m665KYqsaeE4ukNKIooRw7IsFrbL-zGW?usp=sharing][here]]. You should be able to save a copy and run it on your own. Again, if there is anything you don't understand in this code, /read the online documentation first!/
 
 ** Example handling the first round of survey data
 Here is an example notebook that cleans up some of the data that you have collected in the first round of survey results: [[https://colab.research.google.com/drive/1O5xNcKErojmh90sI1lLXypzmPvRKO83T][Survey results Colab notebook]]
