@@ -81,7 +81,7 @@ To view what you've created, we'll use ~matplotlib~. Let's use a scatterplot to 
 Your scatterplot will look slightly different, but should approximate...
 #+CAPTION:A scatterplot of the x and y arrays that you created.
 #+NAME:fig:scatterplot_xy
-[[https://github.com/jd2504/bph-research/blob/master/scatterplot_xy.png]]
+[[https://github.com/jd2504/bph-research/blob/master/plots/scatterplot_xy.png]]
 
 There are other visualizations we can use. We've said the numbers are normally distributed. Let's check that the data look normally distributed (they should follow a bell curve):
 #+begin_src python
@@ -93,7 +93,7 @@ There are other visualizations we can use. We've said the numbers are normally d
 Which produces...
 #+CAPTION:Histogram of x and y arrays.
 #+NAME:fig:histogram_xy
-[[https://github.com/jd2504/bph-research/blob/master/histogram_xy.png]]
+[[https://github.com/jd2504/bph-research/blob/master/plots/histogram_xy.png]]
 
 You can make multiple plots (subplots) on the same figure as well. We'll create two variations of ~y~, ~y1~ and ~y1~. We'll use ~numpy~ that we imported earlier to plot the logarithm of ~x~ plus random noise again:
 #+begin_src
@@ -111,7 +111,7 @@ You can make multiple plots (subplots) on the same figure as well. We'll create 
 Producing...
 #+CAPTION:Two versions of y.
 #+NAME:fig:scatterplot
-[[https://github.com/jd2504/bph-research/blob/master/scatterplot_logx.png]]
+[[https://github.com/jd2504/bph-research/blob/master/plots/scatterplot_logx.png]]
 
 Or you could plot them side by side using /subplots/:
 #+begin_src
@@ -137,10 +137,10 @@ Or you could plot them side by side using /subplots/:
 Which produces...
 #+CAPTION:Two versions of y.
 #+NAME:fig:scatterplot
-[[https://github.com/jd2504/bph-research/blob/master/scatterplot_logx_2.png]]
+[[https://github.com/jd2504/bph-research/blob/master/plots/scatterplot_logx_2.png]]
 
 So far we've only plotted /continuous/ data, or /metrics/...
-
+n
 In your survey data, you will have a number of categorical variables, or /attributes/. Let's generate some random data and plot them...
 
 #+begin_src
@@ -163,7 +163,7 @@ Let's plot our data using ~plt.bar()~:
 Producing...
 #+CAPTION:Bar plot of grades.
 #+NAME:fig:barplot_grades
-[[https://github.com/jd2504/bph-research/blob/master/bar_grades.png]]
+[[https://github.com/jd2504/bph-research/blob/master/plots/bar_grades.png]]
 
 This code is also saved [[https://colab.research.google.com/drive/1m665KYqsaeE4ukNKIooRw7IsFrbL-zGW?usp=sharing][here]]. You should be able to save a copy and run it on your own. Again, if there is anything you don't understand in this code, /read the online documentation first!/
 
